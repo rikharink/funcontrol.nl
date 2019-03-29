@@ -1,29 +1,75 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="menu">
+      <div id="logo">
+        <h1>funcontrol</h1>
+      </div>
+      <nav id="nav">
+        <router-link to="/">Aandachtspunten</router-link>
+        <router-link to="/settings">Instellingen</router-link>
+        <router-link to="/about">Over</router-link>
+      </nav>
     </div>
-    <router-view/>
+    <router-view id="view"/>
   </div>
 </template>
-
 <style lang="scss">
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
 }
-#nav {
-  padding: 30px;
+#menu {
+  background: whitesmoke;
+  height: 100vh;
+  width: 15vw;
+
+  #logo {
+    padding: 0 0 72px;
+  }
+
+  #nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+  }
+
   a {
+    margin: 4px 0;
+    width: 100%;
+    background: white;
+    text-decoration: none;
+    padding: 8px 16px;
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      color: #42b983;
+      color: orange;
+    }
+
+    &:hover {
+      background: orange;
+      color: white;
     }
   }
+}
+#view {
+  flex: 1 1 auto;
 }
 </style>

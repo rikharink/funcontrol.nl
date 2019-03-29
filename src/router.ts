@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Aandachtspunten from './views/Aandachtspunten.vue';
+import Settings from './views/Settings.vue';
 
 Vue.use(Router);
 
@@ -10,16 +11,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'aandachtspunten',
+      component: Aandachtspunten,
     },
     {
       path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      name: 'over',
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import(/* webpackChunkName: "settings" */ './views/Settings.vue'),
     },
   ],
 });
