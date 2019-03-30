@@ -5,9 +5,9 @@
         <h1>funcontrol</h1>
       </div>
       <nav id="nav">
-        <router-link to="/">Aandachtspunten</router-link>
-        <router-link to="/settings">Instellingen</router-link>
-        <router-link to="/about">Over</router-link>
+        <router-link to="/aandachtspunten">Aandachtspunten</router-link>
+        <router-link to="/instellingen">Instellingen</router-link>
+        <router-link to="/over">Over</router-link>
       </nav>
     </div>
     <router-view id="view"/>

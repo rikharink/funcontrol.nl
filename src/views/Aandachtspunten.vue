@@ -12,6 +12,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Items from "@/components/Items.vue";
 import Currency from "@/components/Currency.vue";
 import Devmode from "@/components/Devmode.vue";
+
 @Component({
   components: {
     Items,

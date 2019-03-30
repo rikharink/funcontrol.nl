@@ -13,6 +13,7 @@ export default new Vuex.Store({
     facturenIncrease: 0,
     afgekeurdeDeclaraties: 0,
     failureChance: 0,
+    loggedIn: true,
     devmode: false,
     items: [new Item('test-item', 'Test Item', 'Test item please ignore', 15, 0.1, 0),
     new Item('test-item2', 'Test 2', 'Ignore me pl0x', 15, 0, 0.1)],
@@ -20,21 +21,21 @@ export default new Vuex.Store({
   mutations: {
     update(state) {
       const add = (a: number, b: number) => a + b;
-      const facturen = state.items.map((i) => i.Fps).reduce(add, 0);
-      const declaraties = state.items.map((i) => i.Dps).reduce(add, 0);
-      state.facturenIncrease += facturen;
-      state.declaratieIncrease += declaraties;
+      const fac = state.items.map((i) => i.Fps).reduce(add, 0);
+      const dec = state.items.map((i) => i.Dps).reduce(add, 0);
+      state.facturenIncrease += fac;
+      state.declaratieIncrease += dec;
       const facturenIncreaseInt = Math.trunc(state.facturenIncrease);
       const declaratieIncreaseInt = Math.trunc(state.declaratieIncrease);
       state.facturenIncrease = Number((state.facturenIncrease - facturenIncreaseInt).toFixed(2));
       state.declaratieIncrease = Number((state.declaratieIncrease - declaratieIncreaseInt).toFixed(2));
 
+      state.failureChance = state.items.map((i) => i.FailureChanceMultiplier).reduce(add, 0);
       state.facturen += facturenIncreaseInt;
       if (state.facturen >= declaratieIncreaseInt) {
         state.declaraties += declaratieIncreaseInt;
         state.facturen -= declaratieIncreaseInt;
       }
-      state.failureChance = state.items.map((i) => i.FailureChanceMultiplier).reduce(add, 0);
     },
     purchase(state, item: string) {
       const it = state.items.filter((i) => i.Id === item)[0];
@@ -63,8 +64,20 @@ export default new Vuex.Store({
         state.declaraties++;
       }
     },
+    logIn(state) {
+      state.loggedIn = true;
+    },
     toggleDevmode(state) {
       state.devmode = !state.devmode;
+    },
+    setDeclaraties(state, value: number) {
+      state.declaraties = value;
+    },
+    setFacturen(state, value: number) {
+      state.facturen = value;
+    },
+    setAfgekeurdeDeclaraties(state, value: number) {
+      state.afgekeurdeDeclaraties = value;
     },
   },
   actions: {
