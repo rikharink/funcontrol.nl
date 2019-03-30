@@ -39,7 +39,7 @@ html {
 #menu {
   background: whitesmoke;
   height: 100vh;
-  width: 15vw;
+  width: 20vw;
 
   #logo {
     padding: 0 0 72px;
