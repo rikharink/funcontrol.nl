@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Aandachtspunten from './views/Aandachtspunten.vue';
-import Settings from './views/Settings.vue';
+import Login from '@/views/Login.vue';
 
 Vue.use(Router);
 
@@ -11,17 +10,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'aandachtspunten',
-      component: Aandachtspunten,
+      name: 'login',
+      component: Login,
     },
     {
-      path: '/about',
+      path: '/aandachtspunten',
+      name: 'aandachtspunten',
+      component: () => import(/* webpackChunkName: "aandachtspunten" */ './views/Aandachtspunten.vue'),
+    },
+    {
+      path: '/over',
       name: 'over',
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
     {
-      path: '/settings',
-      name: 'settings',
+      path: '/instellingen',
+      name: 'instellingen',
       component: () => import(/* webpackChunkName: "settings" */ './views/Settings.vue'),
     },
   ],

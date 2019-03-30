@@ -27,19 +27,16 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Item } from "@/game/item.ts";
 
-@Component({
-  computed: {
-    items(): Item[] {
-      return this.$store.state.items;
-    }
-  },
-  methods: {
-    purchase(itemId: string) {
-      this.$store.commit("purchase", itemId);
-    }
+@Component
+export default class Items extends Vue {
+  get items(): Item[] {
+    return this.$store.state.items;
   }
-})
-export default class Items extends Vue {}
+
+  purchase(itemId: string) {
+    this.$store.commit("purchase", itemId);
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
