@@ -24,9 +24,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
     {
-      path: '/instellingen',
-      name: 'instellingen',
-      component: () => import(/* webpackChunkName: "settings" */ './views/Settings.vue'),
+      path: '/rapportages',
+      name: 'rapportages',
+      component: () => import(/* webpackChunkName: "settings" */ './views/Reports.vue'),
     },
   ],
 });

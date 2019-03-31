@@ -1,5 +1,4 @@
 <template>
-  <VueDragResize :isActive="true" :w="300" :h="300">
     <div class="fake-browser-ui">
       <div class="frame">
         <span></span>
@@ -8,16 +7,12 @@
       </div>
       <slot></slot>
     </div>
-  </VueDragResize>
 </template>
-    VueDragResize
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { VueDragResize } from "vue-drag-resize";
 
 @Component({
   components: {
-    VueDragResize
   }
 })
 export default class FakeBrowser extends Vue {}
@@ -26,7 +21,7 @@ export default class FakeBrowser extends Vue {}
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .fake-browser-ui {
-  padding: 20px 0 0;
+  padding: 18px 5px 3px 5px;
   border-radius: 3px;
   border-bottom: 2px solid #ccc;
   background: #ddd;
@@ -34,6 +29,8 @@ export default class FakeBrowser extends Vue {}
   position: relative;
   line-height: 0;
   z-index: 1000;
+  width: 100%;
+  height: 100%;
 
   .frame {
     display: block;
@@ -41,6 +38,18 @@ export default class FakeBrowser extends Vue {}
     position: absolute;
     top: 5px;
     left: 1px;
+  }
+
+  span:nth-child(1) {
+    background-color: red;
+  }
+
+  span:nth-child(2) {
+    background-color: orange;
+  }
+
+  span:nth-child(3) {
+    background-color: green;
   }
 
   span {
@@ -52,5 +61,7 @@ export default class FakeBrowser extends Vue {}
     float: left;
     margin: 0 0 0 4px;
   }
+
+  
 }
 </style>

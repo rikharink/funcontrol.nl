@@ -1,23 +1,24 @@
 <template>
   <FakeBrowser class="devmode" v-if="devmode">
+    <div class="devform">
+      <div>
+        <label for="declaraties">declaraties</label>
+        <input id="declaraties" v-model="declaraties">
+      </div>
+      <div>
+        <label for="afgekeurd">afgekeurde declaraties</label>
+        <input id="afgekeurd" v-model="afgekeurdeDeclaraties">
+      </div>
     <div>
-      <label for="declaraties">declaraties</label>
-      <input id="declaraties" v-model="declaraties">
+      <button @click="resetState">Reset</button>
     </div>
-    <div>
-      <label for="facturen">te verzenden declaraties</label>
-      <input id="facturen" v-model="facturen">
-    </div>
-    <div>
-      <label for="afgekeurd">afgekeurde declaraties</label>
-      <input id="afgekeurd" v-model="afgekeurdeDeclaraties">
     </div>
   </FakeBrowser>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Item } from "@/game/item.ts";
+import { Item } from "@/game/Models/item";
 import FakeBrowser from "@/components/FakeBrowser.vue";
 
 @Component({
@@ -43,20 +44,17 @@ export default class Currency extends Vue {
     this.$store.commit("setDeclaraties", parseFloat(value));
   }
 
-  get facturen(): string {
-    return this.$store.state.facturen;
-  }
-
-  set facturen(value: string) {
-    this.$store.commit("setFacturen", parseFloat(value));
-  }
-
   get afgekeurdeDeclaraties(): string {
     return this.$store.state.afgekeurdeDeclaraties;
   }
 
   set afgekeurdeDeclaraties(value: string) {
     this.$store.commit("setAfgekeurdeDeclaraties", parseFloat(value));
+  }
+
+  public resetState(): void {
+    localStorage.clear();
+    window.location.reload();
   }
 
   private watchDevmode() {
@@ -83,4 +81,15 @@ export default class Currency extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  .devmode {
+    width: 400px;
+    height: 250px;
+  }
+  
+  .devform {
+    background: white;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+  }
 </style>
